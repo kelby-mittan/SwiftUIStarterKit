@@ -19,7 +19,7 @@ struct DetailView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             PodcastPosterView(podcast: podcast)
-            TitleView()
+            TitleView(podcast: podcast)
             PodcastInfoView()
             RatingsView()
             DescriptionView(podcast: podcast)
@@ -37,9 +37,16 @@ struct DetailView_Previews: PreviewProvider {
 }
 
 struct TitleView: View {
+    
+    let podcast: Podcast
+    
+    init(podcast: Podcast) {
+        self.podcast = podcast
+    }
+    
     var body: some View {
         HStack {
-            Text("Origins Podcast")
+            Text(podcast.title)
                 //                .font(.title)
                 .fontWeight(.heavy)
                 .padding(.leading)
@@ -47,7 +54,7 @@ struct TitleView: View {
             Spacer()
             
             Image(systemName: "bookmark")
-                .font(.title)
+                .font(.largeTitle)
                 .padding(.top, 4)
                 .foregroundColor(.yellow)
                 .padding(.trailing)

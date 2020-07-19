@@ -13,11 +13,16 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: DetailView(podcast: Podcast.origins)) {
-                    PodcastPosterView(podcast: Podcast.origins)
-                    Text("Origins Podcast")
-                        .font(.title)
-                        .fontWeight(.semibold)
+                
+                List(Podcast.podcasts) { podcast in
+                    
+                    NavigationLink(destination: DetailView(podcast: podcast)) {
+                        PodcastPosterView(podcast: podcast)
+                        Text(podcast.title)
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                    }
+                    .padding(.trailing)
                 }
             }
         }
@@ -37,10 +42,11 @@ struct PodcastPosterView: View {
         self.podcast = podcast
     }
     var body: some View {
-        Image(Podcast.origins.image)
+        Image(podcast.image)
             .renderingMode(.original)
             .resizable()
             .aspectRatio(contentMode: .fit)
+            .frame(width: 200.0, height: 200.0)
             .cornerRadius(12)
             .padding()
     }
