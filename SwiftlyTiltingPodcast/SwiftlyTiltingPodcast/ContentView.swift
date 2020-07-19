@@ -10,11 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var searchText = ""
+    
     var body: some View {
         NavigationView {
             VStack {
-                
-                List(Podcast.podcasts) { podcast in
+                SearchBar(text: $searchText)
+                    .padding(.top)
+                List(Podcast.podcasts.filter({ searchText.isEmpty ? true : $0.title.contains(searchText)})) { podcast in
                     
                     NavigationLink(destination: DetailView(podcast: podcast)) {
                         PodcastPosterView(podcast: podcast)
@@ -24,6 +27,7 @@ struct ContentView: View {
                     }
                     .padding(.trailing)
                 }
+                .navigationBarTitle("Podcasts")
             }
         }
     }

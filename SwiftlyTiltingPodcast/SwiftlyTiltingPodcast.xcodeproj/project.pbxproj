@@ -15,6 +15,7 @@
 		02B5683324C3A1A4004D5C6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B5683124C3A1A4004D5C6D /* LaunchScreen.storyboard */; };
 		02B5683B24C3A6BE004D5C6D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5683A24C3A6BE004D5C6D /* DetailView.swift */; };
 		02B5683D24C3C4E3004D5C6D /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5683C24C3C4E3004D5C6D /* Podcast.swift */; };
+		02B5683F24C3D8E0004D5C6D /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5683E24C3D8E0004D5C6D /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		02B5683424C3A1A4004D5C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02B5683A24C3A6BE004D5C6D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		02B5683C24C3C4E3004D5C6D /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		02B5683E24C3D8E0004D5C6D /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				02B5682824C3A19C004D5C6D /* SceneDelegate.swift */,
 				02B5682A24C3A19D004D5C6D /* ContentView.swift */,
 				02B5683A24C3A6BE004D5C6D /* DetailView.swift */,
+				02B5683E24C3D8E0004D5C6D /* SearchBar.swift */,
 				02B5683C24C3C4E3004D5C6D /* Podcast.swift */,
 				02B5682C24C3A1A4004D5C6D /* Assets.xcassets */,
 				02B5683124C3A1A4004D5C6D /* LaunchScreen.storyboard */,
@@ -157,6 +160,7 @@
 				02B5682924C3A19C004D5C6D /* SceneDelegate.swift in Sources */,
 				02B5682B24C3A19D004D5C6D /* ContentView.swift in Sources */,
 				02B5683D24C3C4E3004D5C6D /* Podcast.swift in Sources */,
+				02B5683F24C3D8E0004D5C6D /* SearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
