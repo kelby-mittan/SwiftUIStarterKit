@@ -9,16 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: DetailView()) {
-                    PodcastPosterView()
+                NavigationLink(destination: DetailView(podcast: Podcast.origins)) {
+                    PodcastPosterView(podcast: Podcast.origins)
                     Text("Origins Podcast")
                         .font(.title)
                         .fontWeight(.semibold)
                 }
-                
             }
         }
     }
@@ -31,8 +31,13 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct PodcastPosterView: View {
+    let podcast: Podcast
+    
+    init(podcast: Podcast) {
+        self.podcast = podcast
+    }
     var body: some View {
-        Image("origins")
+        Image(Podcast.origins.image)
             .renderingMode(.original)
             .resizable()
             .aspectRatio(contentMode: .fit)

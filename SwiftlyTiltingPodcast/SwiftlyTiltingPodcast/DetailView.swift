@@ -9,35 +9,30 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    let podcast: Podcast
+    
+    init(podcast: Podcast) {
+        self.podcast = podcast
+    }
+    
     var body: some View {
-        ScrollView(.vertical) {
-            VStack {
-                PodcastPosterView()
-                TitleView()
-                PodcastInfoView()
-                RatingsView()
-                DescriptionView()
-                
-                HStack {
-                    Text("Guest")
-                    Spacer()
-                    Button(action: {
-                        //
-                    }) {
-                        Text("See info")
-                    }
-                    .padding()
-                    .foregroundColor(.secondary)
-                    .clipShape(Capsule())
-                }
-            }
+        ScrollView(.vertical, showsIndicators: true) {
+            PodcastPosterView(podcast: podcast)
+            TitleView()
+            PodcastInfoView()
+            RatingsView()
+            DescriptionView(podcast: podcast)
+            GuestView(podcast: podcast)
+            PurchaseView()
         }
+        .navigationBarTitle("", displayMode: .inline)
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView(podcast: Podcast.origins)
     }
 }
 
@@ -45,7 +40,7 @@ struct TitleView: View {
     var body: some View {
         HStack {
             Text("Origins Podcast")
-//                .font(.title)
+                //                .font(.title)
                 .fontWeight(.heavy)
                 .padding(.leading)
             
@@ -92,18 +87,85 @@ struct RatingsView: View {
 }
 
 struct DescriptionView: View {
+    
+    let podcast: Podcast
+    
+    init(podcast: Podcast) {
+        self.podcast = podcast
+    }
+    
     var body: some View {
         VStack {
             HStack {
-                Text("Description")
+                Text(podcast.description)
                     .fontWeight(.bold)
                 Spacer()
             }
             .padding(.bottom)
             
-            Text("The Origins Podcast features in-depth conversations with some of the most interesting people in the world about the issues that impact all of us in the 21st century. Host, theoretical physicist, lecturer, and author, Lawrence M. Krauss, will be joined by guests from a wide range of fields, including science, the arts, and journalism. The topics discussed on The Origins Podcast reflect the full range of the human experience – exploring science and culture in a way that seeks to entertain, educate, and inspire.")
+            Text("")
             
         }
         .padding()
+    }
+}
+
+struct GuestView: View {
+    let podcast: Podcast
+    
+    init(podcast: Podcast) {
+        self.podcast = podcast
+    }
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Guest")
+                    .fontWeight(.medium)
+                Spacer()
+                Button(action: seeGuestInfoButton) {
+                    Text("See Info")
+                }
+                .padding()
+                .foregroundColor(.secondary)
+                .clipShape(Capsule())
+            }
+            .padding()
+            
+            ScrollView(.horizontal, showsIndicators: true) {
+                HStack {
+                    ForEach(0 ..< 10) { item in
+                        VStack {
+                            Image(systemName: "person.crop.circle")
+                                .font(.system(size: 60))
+                            Text(self.podcast.guest.replacingOccurrences(of: " ", with: "\n"))
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.center)
+                                .padding(.top, 2)
+                            
+                        }
+                        .padding()
+                    }
+                }
+            }
+        }
+    }
+    
+    func seeGuestInfoButton() {
+        print("Guest Info")
+    }
+}
+
+struct PurchaseView: View {
+    var body: some View {
+        NavigationLink(destination: Text("Add to Favorites")) {
+            Text("Add to Favorites")
+                .fontWeight(.heavy)
+                .padding()
+                .frame(width: UIScreen.main.bounds.width - 24)
+                .foregroundColor(.white)
+                .background(Color.purple)
+                .clipShape(Capsule())
+                .padding()
+        }
     }
 }
